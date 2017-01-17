@@ -1605,7 +1605,7 @@ describe('Restangular', function () {
 
       it('should not add restangularized ETag to response object', function () {
         plainByDefaultRestangular.one('etagAccounts', 1).get().then(function (account) {
-          expect(account).toEqual(testData.accountsModel[0]);
+          expect(account).toEqual(testData.accountsModel[1]);
         });
         $httpBackend.flush();
       });
