@@ -1148,6 +1148,7 @@
             }
 
             if (true === config.plainByDefault) {
+              delete data[config.restangularFields.etag];
               return resolvePromise(deferred, response, data, filledArray);
             }
 
@@ -1249,6 +1250,7 @@
               var data;
 
               if (true === config.plainByDefault) {
+                delete elem[config.restangularFields.etag];
                 return resolvePromise(deferred, response, elem, filledObject);
               }
 
