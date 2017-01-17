@@ -1593,25 +1593,25 @@ describe('Restangular', function () {
 
     describe('with ETag', function () {
       beforeEach(function () {
-        $httpBackend.whenGET('/accounts').respond(
+        $httpBackend.whenGET('/etagAccounts').respond(
           testData.accountsModel,
           {'ETag': 'c11ea3f8-3bfd-4be8-a6a6-501dd831b8a4'}
         );
-        $httpBackend.whenGET('/accounts/1').respond(
+        $httpBackend.whenGET('/etagAccounts/1').respond(
           testData.accountsModel[1],
           {'ETag': 'bf79b780-f132-4f44-a9eb-7e6eb4f902b2'}
         );
       });
 
       it('should not add restangularized ETag to response object', function () {
-        plainByDefaultRestangular.one('accounts', 0).get().then(function (account) {
+        plainByDefaultRestangular.one('etagAccounts', 1).get().then(function (account) {
           expect(account).toEqual(testData.accountsModel[0]);
         });
         $httpBackend.flush();
       });
 
       it('shoud not add restangularized ETag to response collection', function () {
-        plainByDefaultRestangular.all('accounts').getList().then(function (accounts) {
+        plainByDefaultRestangular.all('etagAccounts').getList().then(function (accounts) {
           expect(accounts).toEqual(testData.accountsModel);
         });
         $httpBackend.flush();
